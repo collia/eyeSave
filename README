@@ -1,0 +1,3 @@
+Program which can control time you spend in front of monitor. Can be configured. 
+Need JVM. It depend from jdom library.
+
