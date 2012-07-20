@@ -1,0 +1,1 @@
+jar cvfm eyeSave.jar MANIFEST.MF main/*.* resouces/*/*.* timer/*.* windows/*.*

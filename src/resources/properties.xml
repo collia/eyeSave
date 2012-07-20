@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parameters><!--Properties of eyeSaver--><window><position><X>354</X><Y>112</Y></position><size>1</size></window><timer><reloadWork><hour>1</hour><minutes>0</minutes></reloadWork><reloadNotWork><hour>0</hour><minutes>15</minutes></reloadNotWork></timer></parameters>
