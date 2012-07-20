@@ -30,14 +30,12 @@ public class StatisticFrame extends JDialog {
 	FrameDragger fd;
 	
 	Color col = Color.BLUE;
-	//private Properties prop;
 	
 	final JButton button;
 	
 	
 	public StatisticFrame(Color c, Properties prop, Statistic stat) {
 		col=c;
-	//	this.prop = prop;
 		wind = this;
 		this.setUndecorated(true);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -142,9 +140,7 @@ public class StatisticFrame extends JDialog {
  }
 
 private JButton createButton(String text, String descriptions, Color color){
-//	if(useColor)
 	UIManager.put("Button.background", color);
-//	UIManager.put("Button.select", color);
 	UIManager.put("Button.select", UIManager.get("Button.background"));
 	JButton locBut = null;
 	locBut = new JButton(createImageIcon("/but"+text+"/but_1.png", descriptions));

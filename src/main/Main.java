@@ -1,13 +1,7 @@
 package main;
-//import java.text.NumberFormat;
-//import java.util.Arrays;
-//import java.util.Locale;
 
-//import javax.swing.JFrame;
 import java.io.IOException;
-
 import javax.swing.JOptionPane;
-
 import org.jdom.JDOMException;
 
 import windows.*;
@@ -18,8 +12,6 @@ public class Main {
 
 	
 	public static void main(String[] args) {
-		//System.out.println(System.getProperty("java.runtime.version"));
-		//System.out.println(System.getProperty("java.runtime.version").compareTo("1.6.0_10"));
 		//java.runtime.version=1.6.0_13-b03
 		
 		Properties prop = Properties.createPProperties();
@@ -54,8 +46,6 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-	//	 Locale[] locales = NumberFormat.getAvailableLocales();
-	//	 System.out.println(Arrays.toString(locales));
 		
 		Statistic statistic = new Statistic();
 		

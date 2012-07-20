@@ -3,7 +3,6 @@ package main;
 public class Properties {
 	private boolean isNewJVM = false;
 
-//	private static boolean isExist = false;
 	
 	private int workHour = 0;
 	private int workMin = 1;

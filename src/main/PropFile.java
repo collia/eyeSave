@@ -12,51 +12,47 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.XMLOutputter;
 
 public class PropFile {
-	PropFile(){
-	/*	File f = new File("resources/properties.xml");
-		if(!f.canRead()) return;
-	*/
-	}
+	PropFile(){}
+
 	static public boolean readParemeters(Properties p) throws JDOMException, IOException{
 		File f = new File("resources/properties.xml");
 		if(!f.canRead()) return false;
 		
-	    SAXBuilder sb = new SAXBuilder();
-	    Document doc = sb.build(f);
+		SAXBuilder sb = new SAXBuilder();
+		Document doc = sb.build(f);
 	    	//some setup
-	    Element propElement = doc.getRootElement();
+		Element propElement = doc.getRootElement();
 
-	      //Access a child element
-	    Element posElement = propElement.getChild("window").getChild("position");
-	      //show success or failure
-	    if(posElement != null) {
-	         p.setPosX(Integer.parseInt(posElement.getChild("X").getText()));
-	         p.setPosY(Integer.parseInt(posElement.getChild("Y").getText()));
-	    	
-	      } else {
-	          System.out.println("Something is wrong.  We did not find a propperties.xml");
-	          return false;
-	      }
-	    posElement = propElement.getChild("window").getChild("size");
-	      //show success or failure
-	    if(posElement != null) {
-	         p.setSize(Integer.parseInt(posElement.getText()));
-	    	
-	      } else {
-	          System.out.println("Something is wrong.  We did not find a propperties.xml");
-	          return false;
-	      }
-	    posElement = propElement.getChild("timer").getChild("reloadWork");
-	      //show success or failure
-	    if(posElement != null) {
-	         p.setWorkHour(Integer.parseInt(posElement.getChild("hour").getText()));
-	         p.setWorkMin(Integer.parseInt(posElement.getChild("minutes").getText()));
-	      } else {
-	          System.out.println("Something is wrong.  We did not find a propperties.xml");
-	          return false;
-	      }
+		//Access a child element
+		Element posElement = propElement.getChild("window").getChild("position");
+		//show success or failure
+		if(posElement != null) {
+		    p.setPosX(Integer.parseInt(posElement.getChild("X").getText()));
+		    p.setPosY(Integer.parseInt(posElement.getChild("Y").getText()));
+		    
+		} else {
+		    System.out.println("Something is wrong.  We did not find a propperties.xml");
+		    return false;
+		}
+		posElement = propElement.getChild("window").getChild("size");
+		//show success or failure
+		if(posElement != null) {
+		    p.setSize(Integer.parseInt(posElement.getText()));
+		} else {
+		    System.out.println("Something is wrong.  We did not find a propperties.xml");
+		    return false;
+		}
+		posElement = propElement.getChild("timer").getChild("reloadWork");
+		//show success or failure
+		if(posElement != null) {
+		    p.setWorkHour(Integer.parseInt(posElement.getChild("hour").getText()));
+		    p.setWorkMin(Integer.parseInt(posElement.getChild("minutes").getText()));
+		} else {
+		    System.out.println("Something is wrong.  We did not find a propperties.xml");
+		    return false;
+		}
 	    
-	    posElement = propElement.getChild("timer").getChild("reloadNotWork");
+		posElement = propElement.getChild("timer").getChild("reloadNotWork");
 	      //show success or failure
 	    if(posElement != null) {
 	         p.setPlayHour(Integer.parseInt(posElement.getChild("hour").getText()));
@@ -67,20 +63,18 @@ public class PropFile {
 	      }
 
 	    
-		return true;
+	    return true;
 	}
-	static public boolean writeParemeters(Properties p) throws IOException{
-		File f = new File("resources/properties.xml");
-		if(!f.canWrite()) return false;
+    static public boolean writeParemeters(Properties p) throws IOException{
+	File f = new File("resources/properties.xml");
+	if(!f.canWrite()) return false;
 		
-		//Document doc = new Document();
+	//Document doc = new Document();
 		
-		  // Create the root element
+	// Create the root element
         Element prop = new Element("parameters");
         //create the document
         Document myDocument = new Document(prop);
-        //add an attribute to the root element
-  //      carElement.setAttribute(new Attribute("vin", "123fhg5869705iop90"));
 
         //add a comment
         prop.addContent(new Comment("Properties of eyeSaver"));
@@ -99,11 +93,7 @@ public class PropFile {
         win.addContent(new Element("size").setText(String.valueOf(p.getSize())));
         prop.addContent(win);
         
-       // carElement.addContent(make);
-       
-        //carElement.addContent(new Element("make").addContent("Toyota"));
-
-      
+         
         Element timer = new Element("timer");
         Element timeW = new Element("reloadWork");
         timeW.addContent(new Element("hour").setText(String.valueOf(p.getWorkHour())));
@@ -118,17 +108,19 @@ public class PropFile {
         timer.addContent(timeNW);
         prop.addContent(timer);
   	
-		XMLOutputter outputter = new XMLOutputter();
+	XMLOutputter outputter = new XMLOutputter();
 		
-           //output to a file
+	//output to a file
         FileWriter writer = new FileWriter(f);
         outputter.output(myDocument, writer);
         writer.close();
 
-		return true;
-	}
+	return true;
+    }
 }
 /*
+Sample config file
+
  <?xml version="1.0" ?> 
 <!DOCTYPE parameters> 
 <parameters>

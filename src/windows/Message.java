@@ -16,8 +16,6 @@ import javax.swing.UIManager;
 
 import main.Properties;
 
-//import com.sun.awt.AWTUtilities;
-
 public class Message extends JDialog {
 	
 	private static final long serialVersionUID = 6230210522884535347L;
@@ -29,8 +27,6 @@ public class Message extends JDialog {
 	Color col = Color.BLUE;
 	private boolean useColor = false;
 	
-	//private Properties prop;
-	
 	public Message(String title, String img, String descr,Properties prop){
 		this(title, img, descr, Color.BLUE, prop);
 		useColor = false;
@@ -38,32 +34,13 @@ public class Message extends JDialog {
 	
 	public Message(String title, String img, String descr, Color c, Properties prop){
 		
-		//super(title);
 		col = c;
-	//	this.prop = prop;
-		
 		wind = this;
 		this.setUndecorated(true);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setAlwaysOnTop(true);
-		
-	/*	 Rectangle screenRect = this.getGraphicsConfiguration().getBounds();
-		 this.setLocation(
-	         screenRect.x + screenRect.width/2 - this.getSize().width/2,
-			 screenRect.y + screenRect.height/2 - this.getSize().height/2);
-		*/
-		
-	/*	String description = "My button";
-		button = new JButton(createImageIcon("10/but_10_1.png", description));
-		button.setPressedIcon(createImageIcon("10/but_10_2.png", description));
-		button.setRolloverIcon(createImageIcon("10/but_10_1.png", description));
-		button.setDisabledIcon(createImageIcon("10/but_10_3.png", description));
-		button.setMargin(new Insets(0,0,0,0));
-	*/	
 		fd = new FrameDragger(this);
-	//	button.addMouseListener(fd);
-	//	button.addMouseMotionListener(fd);
 		
 		button = createButton(img,descr,col);
 		
@@ -102,7 +79,7 @@ public class Message extends JDialog {
 	private JButton createButton(String text, String descriptions, Color color){
 		if(useColor)
 			UIManager.put("Button.background", color);
-	//	UIManager.put("Button.select", color);
+
 		UIManager.put("Button.select", UIManager.get("Button.background"));
 		JButton locBut = null;
 		locBut = new JButton(createImageIcon("/but"+text+"/but_1.png", descriptions));

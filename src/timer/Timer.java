@@ -1,7 +1,6 @@
 package timer;
 
 import java.util.Date;
-//import java.util.TimerTask;
 
 import java.util.concurrent.*;
 
@@ -18,8 +17,6 @@ public class Timer {
 	private boolean isPaused = false;
 	
 	
-///	 TimerTask task;
-//	 java.util.Timer timer2;
 	 
 	 int hours = 0;
 	 int minutes = 0;
@@ -62,11 +59,9 @@ public class Timer {
 		 		
 		 		if(isWork){
 		 			wind = new Message("Timer Stop", "14", "Timer Stop", prop);
-		 		//	mainPanel.setButNotWork();
 		 			statistic.endWork();
 		 		} else {
 		 			wind = new Message("Timer Stop", "12", "Timer Stop", prop);
-		 		//	mainPanel.setButWork();
 		 			statistic.endPlay();
 		 		}
 		 		isWork = !isWork;
@@ -95,28 +90,6 @@ public class Timer {
 
 	public Timer(Properties prop){
 		this.prop = prop;
-//		 timer2 = new java.util.Timer();
-	/*	 task = new TimerTask() {
-		    public void run()
-		    {
-		    //Do work!
-		    //	  System.out.println( "Запуск задачи" );
-		    //	  System.out.println( "Время: " + new Date().getTime());
-		    	if(secounds-- <= 0){
-		    		secounds = 60;
-		    		if(minutes-- <= 0){
-		    		   minutes = 60;
-		    		   if((hours-- <=0)&(minutes-- <=0)&(minutes-- <=0)){
-		    			   stopTimer();
-		    			   
-		    		   }
-		    		}
-		    	}
-		    	mainPanel.setTime(hours, minutes, secounds);
-		    	
-		    }
-		  };*/
-		  
 		
 	}
 	
@@ -137,15 +110,6 @@ public class Timer {
 			 statistic.beginPlay();
 		 }
 		 isGo = true;
-//		 task = new TimerExec();
-/*		 long curDate = new Date().getTime();
-			// long begDate = curDate & (~((long)0xFFFF));
-		 long begDate = (curDate/1000) * 1000;
-		 Date date = new Date(begDate+1000);
-			  //timer2.schedule( task, 100 );
-		 timer2.schedule( task, date, 1000 ); //date - java.util.Date
-		 */
-//		 timer2.schedule( task, 0L, 1000 ); //date - java.util.Date
 		 TimerExec task = new TimerExec();
 		 beeperHandle = 
 	            scheduler.scheduleAtFixedRate(task, 0, 1, TimeUnit.SECONDS);
@@ -153,30 +117,14 @@ public class Timer {
 	}
 	public void stopTimer(){
 		isGo = false;
-//		if(task != null) task.cancel();
-//		timer2.purge();
 		if(beeperHandle != null) beeperHandle.cancel(false);
 		isPaused = false;
 			
 		
 	}
-	/*public void resumeTimer(){
-		isGo = true;
-		 task = new TimerExec();
-		 long curDate = new Date().getTime();
-			// long begDate = curDate & (~((long)0xFFFF));
-		 long begDate = (curDate/1000) * 1000;
-		 Date date = new Date(begDate+1000);
-			  //timer2.schedule( task, 100 );
-		 timer2.schedule( task, date, 1000 );
-		 
-		
-	}*/
 	public void pauseTimer(){
 		isGo = false;
 		isPaused = true;
-//		task.cancel();
-//		timer2.purge();
 		if(beeperHandle != null) beeperHandle.cancel(false);
 	}
 	public void startWork(){

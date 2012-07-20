@@ -12,7 +12,6 @@ import main.Properties;
 import main.Statistic;
 import main.PropFile;
 
-//import com.sun.awt.*;
 
 import javax.swing.*;
 
@@ -22,7 +21,6 @@ public class MainFrame extends JFrame {
 	JButton button;
 	final FrameDragger fd;
 	final static Color bCol = new Color(00,100,00);//new Color(200,200,200);//Color.getHSBColor(0, 10, 78);
-	//final static Color bCol2 = Color.getHSBColor(30, 40, 50);
 	final static Color textCol = new Color(255,255,255);
 	
 	JLabel textTime;
@@ -33,12 +31,8 @@ public class MainFrame extends JFrame {
 	
 	JButton butHelp;
 	
-//	JButton butOptions;
-//	JFrame parent; 
 	MainFrame parent;
 	
-//	boolean isWork = false;
-//	boolean isGo = false;
 	
 	Timer timer;
 	Properties prop;
@@ -64,36 +58,6 @@ public class MainFrame extends JFrame {
 			case(Properties.LARGE_SIZE): this.setSize(275, 23); break;
 			case(Properties.SMALL_SIZE): this.setSize(220, 20); break;
 		}
-	/*	this.addWindowListener(new WindowListener(){
-
-			public void windowActivated(WindowEvent e) {}
-
-			public void windowClosed(WindowEvent e) {
-				prop.setPosX(parent.getX());
-				prop.setPosY(parent.getY());
-				try {
-					if(!PropFile.writeParemeters(prop)) System.out.println("ERROR");
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-
-			public void windowClosing(WindowEvent e) {
-				prop.setPosX(parent.getX());
-				prop.setPosY(parent.getY());
-			}
-
-			public void windowDeactivated(WindowEvent e) {}
-
-			public void windowDeiconified(WindowEvent e) {}
-
-			public void windowIconified(WindowEvent e) {}
-
-			public void windowOpened(WindowEvent e) {}
-			
-		});
-		*/
 		this.setTitle("Eye saver");
 		this.setAlwaysOnTop(true);
 		
@@ -110,7 +74,7 @@ public class MainFrame extends JFrame {
 		case(Properties.SMALL_SIZE): 
 			shape = new RoundRectangle2D.Float(0, 0, this.getWidth(), this.getHeight(), 20, 20); 
 			break;
-	}
+		}
 		
 		
 		com.sun.awt.AWTUtilities.setWindowShape(this, shape);
@@ -297,8 +261,7 @@ public class MainFrame extends JFrame {
 	private JButton updateButton(JButton but, String text, String descriptions, Color color){
 		UIManager.put("Button.background", color);
 		UIManager.put("Button.select", color);
-		//JButton locBut = null;
-		//but = new JButton(createImageIcon(text+"/but_"+text+"_1.png", descriptions));
+		
 		String size = "";
 		switch(prop.getSize()){
 			case(Properties.BIG_SIZE): size =""; break;
@@ -312,9 +275,7 @@ public class MainFrame extends JFrame {
 		but.setDisabledIcon(createImageIcon("but"+text+size+"/but_3.png", descriptions));
 		but.setMargin(new Insets(0,0,0,0));
 		
-		//locBut.addMouseListener(fd);
-		//locBut.addMouseMotionListener(fd);
-		
+				
 		but.setBorder(null);
 		
 		
@@ -337,8 +298,8 @@ public class MainFrame extends JFrame {
 	JWindow splashScreen;
 	
     private void createSplashScreen() {
-	//splashLabel = new JLabel(createImageIcon("Splash.png", "Splash.accessible_description"));
-    splashLabel = new JLabel(createImageIcon("Intro1.png", "about"));
+
+	splashLabel = new JLabel(createImageIcon("Intro1.png", "about"));
 	
 	splashLabel.addMouseListener(new MouseListener(){
 
@@ -395,13 +356,6 @@ public class MainFrame extends JFrame {
     public void setButStop(){
     	butStartStop = updateButton(butStartStop,"6","Begin Work", bCol);
     }
- /*   public void setButWork(){
-    //	butMenu = updateButton(butMenu,"6","Stop Work", bCol);
-    }
-    public void setButNotWork(){
-    //	butMenu = updateButton(butMenu,"5","Begin Work", bCol);
-    }
-*/
 	public Menu getMenu() {
 		return menu;
 	}

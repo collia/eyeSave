@@ -110,13 +110,13 @@ public class Statistic {
 			timeNotWork += (new Date().getTime() - beginPlay.getTime());
 		
 	
-		// в секундах 
+		// seconds
 		long seconds = timeWork / 1000; 
-		// в минутах 
+		// minuted 
 		long minutes = seconds / 60; 
-		// в часах 
+		// hours 
 		long hours = minutes / 60; 
-		// в днях 
+		// days 
 		long days = hours / 24;
 		
 		daysWork = (int) days;
@@ -124,13 +124,13 @@ public class Statistic {
 		minWork =  (int) (hours == 0? minutes: (minutes %(hours*60)));
 		secWork =  (int) (minutes == 0?seconds:(seconds %(minutes*60)));
 		
-		// в секундах 
+		// seconds
 		seconds = timeNotWork / 1000; 
-		// в минутах 
+		// minutes 
 		minutes = seconds / 60; 
-		// в часах 
+		// hours 
 		hours = minutes / 60; 
-		// в днях 
+		// days 
 		days = hours / 24;
 		
 		daysNotWork = (int) days;

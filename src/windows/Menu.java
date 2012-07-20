@@ -3,7 +3,6 @@ package windows;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Insets;
-//import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +20,6 @@ import timer.Timer;
 import main.Properties;
 import main.Statistic;
 
-//import com.sun.awt.AWTUtilities;
 
 public class Menu extends JDialog {
 	
@@ -31,7 +29,6 @@ public class Menu extends JDialog {
 	JButton buttonStat;
 	JButton buttonParam;
 	static JDialog wind;
-//	FrameDragger fd;
 	MainFrame parent;
 	
 	Color col = Color.BLUE;
@@ -48,7 +45,6 @@ public class Menu extends JDialog {
 	
 	public Menu(final Timer timer, Color c, Properties proper, final MainFrame par, final Statistic stat){
 		
-		//super("Menu");
 		col = c;
 		this.prop = proper;
 		
@@ -63,26 +59,7 @@ public class Menu extends JDialog {
 		
 		this.setLocation(parent.getLocation().x + parent.getHeight(), 
 						 parent.getLocation().y + parent.getHeight());
-	/*	 Rectangle screenRect = this.getGraphicsConfiguration().getBounds();
-		 this.setLocation(
-	         screenRect.x + screenRect.width/2 - this.getSize().width/2,
-			 screenRect.y + screenRect.height/2 - this.getSize().height/2);
-		*/
-		
-	/*	String description = "My button";
-		button = new JButton(createImageIcon("10/but_10_1.png", description));
-		button.setPressedIcon(createImageIcon("10/but_10_2.png", description));
-		button.setRolloverIcon(createImageIcon("10/but_10_1.png", description));
-		button.setDisabledIcon(createImageIcon("10/but_10_3.png", description));
-		button.setMargin(new Insets(0,0,0,0));
-	*/	
-//		fd = new FrameDragger(this);
-	//	button.addMouseListener(fd);
-	//	button.addMouseMotionListener(fd);
-		
 		JPanel pan1 = new JPanel();
-	//	pan1.addMouseMotionListener(fd);
-	//	pan1.addMouseListener(fd);
 		
 		if(!timer.isWork()){
 			buttonWork = createButton("8","working..",col);
@@ -93,11 +70,8 @@ public class Menu extends JDialog {
 		
 		buttonWork.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-			//	if(!fd.isDragged())
-					//System.exit(0);
 					wind.setVisible(false);
 					parent.setMenu(null);
-			//		if(!timer.isPaused()) timer.stopTimer();
 					boolean b = timer.isPaused();
 					if(!timer.isWork()){
 						timer.stopTimer();
@@ -111,7 +85,6 @@ public class Menu extends JDialog {
 						parent.setButStart();
 					}
 					timer.setPaused(b);
-				//	if(!timer.isPaused())timer.startTimer();
 	
 			}
 		});
@@ -120,8 +93,7 @@ public class Menu extends JDialog {
 		
 		buttonStat.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-		//		if(!fd.isDragged())
-					//System.exit(0);
+
 					wind.setVisible(false);
 					parent.setMenu(null);
 					new StatisticFrame(col,prop, stat);
@@ -132,10 +104,7 @@ public class Menu extends JDialog {
 		
 		buttonParam.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-		//		if(!fd.isDragged())
-					//System.exit(0);
 					wind.setVisible(false);
-					//wind = null;
 					parent.setMenu(null);
 					new ParamFrame(col,prop, par);
 			}
@@ -148,11 +117,6 @@ public class Menu extends JDialog {
 		this.getContentPane().add(pan1);
 		this.pack();
 		
-	/*	   Rectangle screenRect = this.getGraphicsConfiguration().getBounds();
-		   this.setLocation(
-	         screenRect.x + screenRect.width/2 - this.getSize().width/2,
-			 screenRect.y + screenRect.height/2 - this.getSize().height/2);
-	*/	
 		   if(prop.isNewJVM()){
 			   Shape shape = new RoundRectangle2D.Float(0, 0, this.getWidth(), this.getHeight(), 20, 20);
 			   com.sun.awt.AWTUtilities.setWindowShape(this, shape);
@@ -171,7 +135,6 @@ public class Menu extends JDialog {
 	private JButton createButton(String text, String descriptions, Color color){
 		if(useColor)
 			UIManager.put("Button.background", color);
-	//	UIManager.put("Button.select", color);
 		UIManager.put("Button.select", UIManager.get("Button.background"));
 		JButton locBut = null;
 		
@@ -188,9 +151,6 @@ public class Menu extends JDialog {
 		locBut.setRolloverIcon(createImageIcon("but"+text+size+"/but_1.png", descriptions));
 		locBut.setDisabledIcon(createImageIcon("but"+text+size+"/but_3.png", descriptions));
 		locBut.setMargin(new Insets(0,0,0,0));
-		
-	//	locBut.addMouseListener(fd);
-	//	locBut.addMouseMotionListener(fd);
 		
 		locBut.setBorder(null);
 		

@@ -49,12 +49,6 @@ class DocListener implements DocumentListener{
     void checkDocument(DocumentEvent e) {
         try {
             String text = e.getDocument().getText(0, e.getDocument().getLength());
-       // 	String text1 = ipFieldMain.getText();
-       // 	String text2 = ipFieldSource.getText();
-       // 	String text3 = ipFieldClient.getText();
-        //    button.setEnabled(checkString(text1) && 
-         //   				  checkString(text2) &&
-          //  				  checkString(text3));
             button.setEnabled(checkString(text)); 
         } catch (BadLocationException ex) {
             //Do something, OK?
@@ -188,9 +182,7 @@ class DocListener implements DocumentListener{
  }
 
 private JButton createButton(String text, String descriptions, Color color){
-//	if(useColor)
 	UIManager.put("Button.background", color);
-//	UIManager.put("Button.select", color);
 	UIManager.put("Button.select", UIManager.get("Button.background"));
 	JButton locBut = null;
 	locBut = new JButton(createImageIcon("/but"+text+"/but_1.png", descriptions));
